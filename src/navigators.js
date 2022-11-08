@@ -1,16 +1,18 @@
+import FollowList from "@app/screens/home/followList";
 import { NavigationContainer } from "@react-navigation/native";
+import Profile from "@app/screens/home/profile";
 import React from "react";
-import TabA from "@app/screens/home/tabA";
-import TabADetails from "@app/screens/home/tabADetails";
+import Search from "@app/screens/home/search";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-function HomeTabAStack() {
+function StackNav() {
   const { Navigator, Screen } = createNativeStackNavigator();
 
   return (
-    <Navigator initialRouteName="TabA">
-      <Screen name="Search" component={TabA} />
-      <Screen name="User details" component={TabADetails} />
+    <Navigator initialRouteName="Search">
+      <Screen name="Search" component={Search} />
+      <Screen name="Profile" component={Profile} />
+      <Screen name="FollowList" component={FollowList} />
     </Navigator>
   );
 }
@@ -18,7 +20,7 @@ function HomeTabAStack() {
 export default () => {
   return (
     <NavigationContainer>
-      <HomeTabAStack />
+      <StackNav />
     </NavigationContainer>
   );
 };

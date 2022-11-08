@@ -20,6 +20,7 @@
     "@react-navigation/native": "^6.0.12",
     "@react-navigation/native-stack": "^6.8.0",
     "@reduxjs/toolkit": "^1.8.5",
+    "axios": "0.27.2",
     "intl": "^1.2.5",
     "luxon": "^3.0.3",
     "react": "18.1.0",

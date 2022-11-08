@@ -1,24 +1,24 @@
-import 'intl';
-import 'intl/locale-data/jsonp/mn-MN';
+import "intl";
+import "intl/locale-data/jsonp/mn-MN";
 
-import {DateTime} from 'luxon';
-import {constants} from '@app/constants';
+import * as constants from "@app/constants";
 
-export function CurrencyFormatter(currencyCode = 'MNT', locales = 'mn-MN') {
+import { DateTime } from "luxon";
+
+const { dateTimeFormat = "" } = constants ?? {};
+
+export function CurrencyFormatter(currencyCode = "MNT", locales = "mn-MN") {
   const options = {
-    style: 'currency',
+    style: "currency",
     currency: currencyCode,
-    currencyDisplay: 'symbol',
+    currencyDisplay: "symbol",
     maximumFractionDigits: 0,
   };
 
   return new Intl.NumberFormat(locales, options);
 }
 
-export function DateTimeFormatter(
-  text = null,
-  format = constants?.dateTimeFormat,
-) {
+export function DateTimeFormatter(text = null, format = dateTimeFormat) {
   if (text) {
     return DateTime?.fromISO(text)?.toFormat(format);
   } else {
@@ -34,7 +34,7 @@ export function DurationFormatter(dateISOString = null) {
   const now = DateTime?.now();
   const createdDate = DateTime.fromISO(dateISOString);
 
-  const dur = now.diff(createdDate, ['hours', 'minutes']).toObject();
+  const dur = now.diff(createdDate, ["hours", "minutes"]).toObject();
 
   if (dur?.hours > 1 && dur?.hours < 24) {
     return `${Math.floor(dur?.hours)} цагийн өмнө`;
